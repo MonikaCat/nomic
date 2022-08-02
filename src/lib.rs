@@ -19,5 +19,5 @@ pub mod error;
 
 #[cfg(feature = "full")]
 pub fn app_client() -> TendermintClient<app::App> {
-    TendermintClient::new("http://localhost:26657").unwrap()
+    TendermintClient::new("http://161.35.51.124:26667").unwrap()
 }

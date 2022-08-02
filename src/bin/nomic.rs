@@ -28,7 +28,7 @@ fn now_seconds() -> i64 {
 }
 
 pub fn app_client() -> TendermintClient<nomic::app::App> {
-    TendermintClient::new("http://localhost:26657").unwrap()
+    TendermintClient::new("http://161.35.51.124:26667").unwrap()
 }
 
 fn my_address() -> Address {

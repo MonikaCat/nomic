@@ -106,7 +106,7 @@ struct TxRequest {
 async fn txs(tx: &str) -> Result<Value, BadRequest<String>> {
     dbg!(tx);
 
-    let client = tm::HttpClient::new("http://localhost:26657").unwrap();
+    let client = tm::HttpClient::new("http://161.35.51.124:26667").unwrap();
 
     let tx_bytes = if let Some('{') = tx.chars().next() {
         let tx: TxRequest = serde_json::from_str(tx).unwrap();
@@ -152,7 +152,7 @@ struct TxRequest2 {
 async fn txs2(tx: &str) -> Result<Value, BadRequest<String>> {
     dbg!(tx);
 
-    let client = tm::HttpClient::new("http://localhost:26657").unwrap();
+    let client = tm::HttpClient::new("http://161.35.51.124:26667").unwrap();
 
     let tx_bytes = if let Some('{') = tx.chars().next() {
         let tx: TxRequest2 = serde_json::from_str(tx).unwrap();
@@ -193,7 +193,7 @@ async fn txs2(tx: &str) -> Result<Value, BadRequest<String>> {
 async fn query(query: &str) -> Result<String, BadRequest<String>> {
     dbg!(query);
 
-    let client = tm::HttpClient::new("http://localhost:26657").unwrap();
+    let client = tm::HttpClient::new("http://161.35.51.124:26667").unwrap();
 
     let query_bytes = hex::decode(query)
         .map_err(|e| BadRequest(Some(format!("{:?}", e))))?;
