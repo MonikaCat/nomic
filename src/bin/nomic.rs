@@ -484,8 +484,8 @@ impl ValidatorsCmd {
             let info: DeclareInfo =
                 serde_json::from_slice(validator.info.bytes.as_slice()).unwrap();
             println!(
-                "- {}\n\tVOTING POWER: {}\n\tMONIKER: {}\n\tCOMMISSION: {}\n\tIDENTITY: {}\n\tDETAILS: {}\n\tMIN_SELF_DELEGATION: {}\n\tJAILED: {}\n\tTOMBSTONED: {}",
-                validator.address, validator.amount_staked, info.moniker, validator.commission.rate, info.identity, info.details, validator.min_self_delegation, validator.jailed, validator.tombstoned, 
+                "- validator:\n   address: \"{}\"\n   voting_power: \"{}\"\n   moniker: \"{}\"\n   commission: \"{}\"\n   identity: \"{}\"\n   details: \"{}\"\n   min_self_delegation: \"{}\"\n   jailed: \"{}\"\n   tombstoned: \"{}\"\n   in_active_set: \"{}\"",
+                validator.address, validator.amount_staked, info.moniker, validator.commission.rate, info.identity, info.details, validator.min_self_delegation, validator.jailed, validator.tombstoned, validator.in_active_set,
             );
         }
 
@@ -530,7 +530,6 @@ pub struct DeclareCmd {
 
 #[derive(Debug, Serialize, Deserialize)]
 struct DeclareInfo {
-    // consensus_key: String,
     moniker: String,
     website: String,
     identity: String,
@@ -546,7 +545,6 @@ impl DeclareCmd {
             .map_err(|_| orga::Error::App("invalid consensus key".to_string()))?;
 
         let info = DeclareInfo {
-            // consensus_key: self.consensus_key.clone(),
             moniker: self.moniker.clone(),
             website: self.website.clone(),
             identity: self.identity.clone(),
@@ -594,7 +592,6 @@ pub struct EditCmd {
 impl EditCmd {
     async fn run(&self) -> Result<()> {
         let info = DeclareInfo {
-            // consensus_key: self.website.clone(),
             moniker: self.moniker.clone(),
             website: self.website.clone(),
             identity: self.identity.clone(),
