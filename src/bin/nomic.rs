@@ -485,7 +485,7 @@ impl ValidatorsCmd {
                 serde_json::from_slice(validator.info.bytes.as_slice()).unwrap();
             println!(
                 "- validator:\n   address: \"{}\"\n   voting_power: \"{}\"\n   moniker: \"{}\"\n   commission: \"{}\"\n   identity: \"{}\"\n   details: \"{}\"\n   min_self_delegation: \"{}\"\n   jailed: \"{}\"\n   tombstoned: \"{}\"\n   in_active_set: \"{}\"",
-                validator.address, validator.amount_staked, info.moniker, validator.commission.rate, info.identity, info.details, validator.min_self_delegation, validator.jailed, validator.tombstoned, validator.in_active_set,
+                validator.address, validator.amount_staked, info.moniker, validator.commission.rate, info.identity, info.details.trim(), validator.min_self_delegation, validator.jailed, validator.tombstoned, validator.in_active_set,
             );
         }
 
