@@ -19,5 +19,5 @@ pub mod error;
 
 #[cfg(feature = "full")]
 pub fn app_client() -> TendermintClient<app::App> {
-    TendermintClient::new("https://rpc.nomic.forbole.com:443").unwrap()
+    TendermintClient::new("http://138.197.71.46:26657 ").unwrap()
 }

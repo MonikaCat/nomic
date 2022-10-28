@@ -28,7 +28,7 @@ fn now_seconds() -> i64 {
 }
 
 pub fn app_client() -> TendermintClient<nomic::app::App> {
-    TendermintClient::new("https://rpc.nomic.forbole.com:443").unwrap()
+    TendermintClient::new("http://138.197.71.46:26657").unwrap()
 }
 
 fn my_address() -> Address {
