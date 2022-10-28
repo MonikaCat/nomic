@@ -28,7 +28,7 @@ fn now_seconds() -> i64 {
 }
 
 pub fn app_client() -> TendermintClient<nomic::app::App> {
-    TendermintClient::new("http://localhost:26657").unwrap()
+    TendermintClient::new("https://rpc.nomic.forbole.com:443").unwrap()
 }
 
 fn my_address() -> Address {
@@ -484,8 +484,8 @@ impl ValidatorsCmd {
             let info: DeclareInfo =
                 serde_json::from_slice(validator.info.bytes.as_slice()).unwrap();
             println!(
-                "- {}\n\tVOTING POWER: {}\n\tMONIKER: {}\n\tDETAILS: {}",
-                validator.address, validator.amount_staked, info.moniker, info.details
+                "- validator:\n   address: \"{}\"\n   voting_power: \"{}\"\n   moniker: \"{}\"\n   commission: \"{}\"\n   identity: \"{}\"\n   details: \"{}\"\n   min_self_delegation: \"{}\"\n   jailed: \"{}\"\n   tombstoned: \"{}\"\n   in_active_set: \"{}\"",
+                validator.address, validator.amount_staked, info.moniker, validator.commission.rate, info.identity, info.details.trim(), validator.min_self_delegation, validator.jailed, validator.tombstoned, validator.in_active_set,
             );
         }
 
